@@ -15,9 +15,9 @@ export class BinanceApiClient implements CryptoApiClient {
       });
 
       return response;
-    } catch (err) {
+    } catch {
       console.error("Something went wrong with fetching data");
-      throw err;
+      throw new Error("Failed to fetch data from Binance API");
     }
   }
 }
