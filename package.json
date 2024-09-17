@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "rm -rf ./dist && tsc",
+    "start": "node ./dist/index.ts"
   },
   "author": "",
   "license": "ISC",
