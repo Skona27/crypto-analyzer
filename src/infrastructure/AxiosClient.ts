@@ -12,9 +12,12 @@ export class AxiosClient implements HttpClient {
     });
   }
 
-  public async get<T>(url: string): Promise<T> {
+  public async get<T>(
+    url: string,
+    params: Record<string, unknown>
+  ): Promise<T> {
     try {
-      return await this.instance.get(url);
+      return await this.instance.get(url, params);
     } catch (err) {
       console.error(err);
       throw err;
