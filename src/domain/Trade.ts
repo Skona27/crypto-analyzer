@@ -1,6 +1,6 @@
 export interface Trade {
   id: string;
   symbol: string;
-  price: string;
+  price: number;
   timestamp: number;
 }

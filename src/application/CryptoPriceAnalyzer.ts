@@ -20,14 +20,19 @@ export class CryptoPriceAnalyzer
   public async execute({ symbol, timestamp }: AnalyzerInput) {
     try {
       const trades = await this.tradeApiService.getTrades(symbol, timestamp);
-      return this.analzePrices(trades);
+
+      if (trades.length === 0) {
+        throw new Error("No trades were fetched");
+      }
+
+      return this.analyzePrices(trades);
     } catch (err) {
       console.error(err);
       throw new Error("Failed to analyze prices");
     }
   }
 
-  private analzePrices(trades: Trade[]): PriceChange {
+  private analyzePrices(trades: Trade[]): PriceChange {
     const { price: firstTradePrice } = trades[0];
     const { price: lastTradePrice } = trades[trades.length - 1];
 
